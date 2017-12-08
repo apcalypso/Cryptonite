@@ -50,7 +50,7 @@ While retrieving the raw data we want to specify the time unit of the data in mi
         }[value]
 ```
 
-After specifying the time period and extracting the data, we want to save the data in a csv file. This is to prevent extracting data repetitively (i.e. wasting time and space) to analyze the data and also to prevent the download of redundant data that has already existed in the **FinalFantasy** folder.
+After specifying the time period and extracting the data, we want to save the data into a csv file. This is to prevent extracting data repetitively (i.e. wasting time and space) to analyze the data and also to prevent the download of redundant data that has already existed in the **FinalFantasy** folder.
 
 ```python
     def done(self):

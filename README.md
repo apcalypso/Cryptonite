@@ -14,7 +14,7 @@ This document highlights the code used within the Jupyter Notebook. For the resu
 
 ### Coding explanation
 
-*Class CryptoCompare*
+**Class CryptoCompare**
 
 To collect data for the cryptocurrency prices we created a class called CryptoCompare in python. Within CryptoCompare we created three main functions: extract raw data, time period specification and data depository. 
 Cryptocompare API is used within function Cryptocompare_histo to collect and retrieve data from the several exchanges to create an aggregate of the prices. Notice the url has the term CCCAGG which stands for CryptoCompare Current Aggregate. 

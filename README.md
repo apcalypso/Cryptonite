@@ -10,7 +10,7 @@ A look at correlation between cryptocurrencies
 Cryptocurrency is a digital or virtual currency, powered by blockchain technology and act as a medium of exchange using cryptography. It is hard to counterfeit due to its cryptographic security and not controlled by any central authority. This feature makes it immune to government interference or manipulation. Currently there is a lot of self-proclaimed experts on the trends and prediction of price movement. Even so, most of these analysis lacks a strong foundation of data and statistics to back up the claims.
 
 The purpose of this project is to determine whether there is any pattern on prices between different cryptocurrencies using correlation in python. We will collect data, analyze and visualize data on several cryptocurrencies. If there is a pattern we will then look further, using Bitcoin as a control variable and investigate other similar altcoins for correlation.
-This document highlights the code used within the Jupyter Notebook. For the results and graphs please refer to the Jupyter Notebook [viewer](http://nbviewer.jupyter.org/github/apcalypso/Cryptonite/blob/25b90adb460b52f527372064eaf15869f98f76ce/PROJECT%20C.ipynb).
+This document highlights the code used within the Jupyter Notebook. For the results and graphs please refer to the [Jupyter Notebook viewer](http://nbviewer.jupyter.org/github/apcalypso/Cryptonite/blob/25b90adb460b52f527372064eaf15869f98f76ce/PROJECT%20C.ipynb).
 
 ### Coding explanation
 

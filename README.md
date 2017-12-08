@@ -34,3 +34,72 @@ Cryptocompare API is used within function Cryptocompare_histo to collect and ret
         btc_frame['dtime'] = (pd.to_datetime(btc_frame['time'],unit='s'))
         return btc_frame
 ```
+
+While retrieving the raw data we want to specify the time unit of the data in minutes, hour or day. Since we want to research on the price pattern we need to compare across different time periods. The two function below time_period and check_time_interval within CryptoCompare would do the trick.
+
+```python
+    def time_period(self, name):
+        self.period = self.check_time_interval(name)
+        return self
+
+    def check_time_interval(self, value):
+        return {
+            'day': 'histoday',
+            'hour': 'histohour',
+            'minute': 'histominute'
+        }[value]
+```
+
+After specifying the time period and extracting the data, we want to save the data in a csv file. This is to prevent extracting data repetitively (i.e. wasting time and space) to analyze the data and also to prevent the download of redundant data that has already existed in the FinalFantasy folder.
+
+```python
+    def done(self):
+        directory = "FinalFantasy"
+        # Create a loop to get multiple cryptocurrencies in USD Value
+        if self.is_save == True:
+            print("Saving dataframe to CSV")
+            
+            try:
+                os.makedirs(directory)
+            except OSError as e:
+                print(e.errno)
+                if e.errno != errno.EEXIST:
+                    print("Folder exist")
+                else:
+                    print("Creating Directory " + directory)
+        for crypto in self.crypto_list:
+             #print(crypto)
+            kryptonite = self.cryptocompare_histo(crypto)
+            if self.is_save == True:
+                starttime = kryptonite.iloc[0].time
+                endtime = kryptonite.iloc[-1].time
+                period = self.period
+                name = crypto
+                
+                # Folder/starttime-endtime-period-cryptoname - CREATING FOLDER AND LABELING
+                file_name = "{}/{}-{}-{}-{}".format(directory, starttime, endtime, period, name)
+                if os.path.isfile(file_name) == False:
+                    kryptonite.to_csv(file_name, sep='\t')
+                else:
+                    print("File already exist")
+            self.crypto_dict[crypto] = kryptonite
+        return self
+```
+
+**Merging Data**
+
+merge_dfs_on_column is a for loop that merges N number of data frames so that we can do analysis on N number of crypto-assets, which provides flexibility moving forward.
+
+```python
+def merge_dfs_on_column(dataframes, labels):
+    '''Merge a single column of each dataframe into a new combined dataframe'''
+    series_dict = {}
+    for index in range(len(dataframes)):
+        series_dict[labels[index]] = dataframes[index][labels[index]]
+    return pd.DataFrame(series_dict)
+```
+
+
+
+
+
